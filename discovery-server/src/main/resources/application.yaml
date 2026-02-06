@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discovery-server
+  threads:
+    virtual:
+      enabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # Como este es el servidor, no necesita registrarse a sí mismo
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
