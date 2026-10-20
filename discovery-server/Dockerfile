@@ -11,6 +11,8 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
+RUN apk add --no-cache curl
+
 COPY --from=build /app/target/*.jar app.jar
 
 # Configuración opcional para habilitar Virtual Threads en la JVM si fuera necesario
